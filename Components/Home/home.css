@@ -1,0 +1,22 @@
+.home-button {
+  text-align: center;
+  border-radius: 2px;
+  background-color: #326d89;
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 100px;
+}
+
+.home-button h3 {
+  margin-top: 10%;
+}
+
+.home-button:hover {
+  color: white;
+  text-decoration: none;
+}
+.home-row:last-child{
+  padding-right: 10px;
+}

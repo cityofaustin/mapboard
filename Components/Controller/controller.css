@@ -1,0 +1,27 @@
+.filter-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.filter{
+  flex-grow: 1;
+}
+.controller-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-map{
+  flex-grow: 2;
+}
+.flex-table{
+  flex-grow: 1;
+  height: 78.8vh;
+}
+
+.leaflet-container{
+  height: 78.8vh !important;
+  width: 51.8vw !important;
+  position: absolute;
+  z-index: 0;
+}
