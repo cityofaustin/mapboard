@@ -1,0 +1,89 @@
+.box-shadow-menu {
+  position: relative;
+  /*padding-left: 1.50em;
+    margin-left: 75%;*/
+  color: white;
+}
+
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  width: 1em;
+  height: 0.15em;
+  background: white;
+  box-shadow: 0 0.25em 0 0 black, 0 0.5em 0 0 black;
+}
+
+.header-menu {
+  background-color: #222222;
+}
+
+.header-menu a {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.headerCom a {
+  color: white;
+  text-decoration: underline;
+}
+
+.headerCom {
+  color: white;
+  background-image: url("/img/header.png");
+
+}
+
+.header-menu-button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.header-menu-button:hover {
+  cursor: pointer;
+}
+
+.row-border {
+  margin-top: 1px;
+  margin-bottom: 5px;
+  font-style: italic;
+  /*border-top: 2px solid grey;
+  border-bottom: 2px solid grey;*/
+}
+
+.headerHome {
+  height: 25vh;
+  text-align: center;
+}
+
+.headerHome h2 {
+  font-size: 7vh;
+  margin-top: 10vh;
+}
+
+@media screen and (max-width: 600px) {
+  .headerHome h2 {
+    margin-top: 0;
+    font-size: 6vh;
+  }
+}
+
+.header-container{
+  display: flex;
+}
+
+.menu-flex{
+  flex-grow: .25;
+}
+
+.text-flex{
+  flex-grow: 8;
+}
