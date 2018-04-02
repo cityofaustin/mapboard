@@ -1,12 +1,12 @@
 import React from 'react';
-import Map from './Map';
-import Table from './Table';
-import Filter from './Filter';
-import { rename, filterData, getData, getMarkersFromGroup, markersFromGroup } from '../Helpers';
+import Map from '../Map/Map';
+import Table from '../Table/Table';
+import Filter from '../Filter/Filter';
+import { rename, filterData, getData, getMarkersFromGroup, markersFromGroup } from '../../Helpers';
 import _ from 'lodash';
 import './controller.css';
-import logo from './logo.svg';
-import Doughnut from './CustomDoughnut';
+import logo from '../Card/logo.svg';
+import Doughnut from '../Charts/CustomDoughnut';
 import Proptypes from 'prop-types';
 
 /*Props: Typically a single config file in the form of a JSON object*/

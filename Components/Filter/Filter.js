@@ -80,6 +80,7 @@ export default class Filter extends React.Component {
           type="text"
           value={this.state.value}
           onChange={this.onSearchChange}
+          placeholder="Search..."
         />
       </div>
     );

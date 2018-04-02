@@ -50,7 +50,7 @@ Chart.pluginService.register({
   }
 });
 
-export default class CustomDoughnut extends React.Component {
+export default class DonutWithText extends React.Component {
   constructor(props) {
     super(props);
   }

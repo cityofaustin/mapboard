@@ -1,5 +1,5 @@
 import React from "react";
-import { createArray } from "../Helpers";
+import { createArray, indexOfValue } from "../../Helpers";
 import Select from "react-select";
 import Proptypes from 'prop-types';
 import "react-select/dist/react-select.css";
@@ -90,7 +90,8 @@ export default class Filter extends React.Component {
         style: { width: "100%" },
         type: "text",
         value: this.state.value,
-        onChange: this.onSearchChange
+        onChange: this.onSearchChange,
+        placeholder: "Search..."
       })
     );
   }

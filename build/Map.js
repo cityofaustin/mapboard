@@ -1,8 +1,8 @@
 import React from "react";
 import { Map, TileLayer } from "react-leaflet";
 import Markers from "./Markers";
-import { getData } from "../Helpers";
-import logo from "./logo.svg";
+import { getData, getMarkersFromGroup } from "../../Helpers";
+import logo from "../Card/logo.svg";
 import "./Map.css";
 /*Map Component, uses leaflet for base component, but adds functionality
 * Can be used separately from Filter and Table.

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { rename } from "../Helpers";
+import { rename } from "../../Helpers";
 import Proptypes from 'prop-types';
 import "./Header.css";
-import Quote from "./Quote";
+import Quote from "../QuoteOfTheDay/Quote";
 
 export default class Header extends React.Component {
   constructor(...args) {
