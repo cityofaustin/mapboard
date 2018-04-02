@@ -7,10 +7,12 @@ function getFiles {
     for entry in "$1"/*
     do
 	if [[ -d "$entry" ]] ; then
+	dir="${entry##*/}"
+	mkdir "$BUILD_DIR/$dir"
 	getFiles "$entry"
 
 	else
-	    file="${entry##*/}"
+	    file="${entry#*/}"
 	    out="$BUILD_DIR/$file"
 	    touch "$out"
 	    if [ ${file: -3} == ".js" ]
