@@ -2,7 +2,7 @@ import React from "react";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import { getData, filterData, format } from "../../Helpers";
-import 'Table.css';
+import './Table.css';
 
 export default class Table extends React.Component {
   constructor(props) {
