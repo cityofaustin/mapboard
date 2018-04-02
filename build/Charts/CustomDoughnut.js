@@ -1,6 +1,6 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import Chart from '../../../node_modules/chart.js/src/chart';
+import Chart from 'chart.js/src/chart';
 import './Charts.css';
 
 Chart.pluginService.register({
