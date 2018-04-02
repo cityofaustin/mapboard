@@ -69,8 +69,15 @@ export default class Controller extends React.Component{
         console.log(position);
         if(!this.props.config.fromGroup){
             let newPosition = [];
-            newPosition.push(Number(position.location_latitude));
-            newPosition.push(Number(position.location_longitude));
+            if(this.props.config.latlong){
+                let latlong = this.props.config.latlong;
+                newPosition.push(Number(position[latlong.lat]));
+                newPosition.push(Number(position[latlong.lon]));
+            }
+            else{
+                newPosition.push(Number(position.location_latitude));
+                newPosition.push(Number(position.location_longitude));
+            }
             this.setState({
                 position: newPosition,
                 marker: position
