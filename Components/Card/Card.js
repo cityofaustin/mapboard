@@ -63,7 +63,7 @@ export default class Card extends React.Component {
     render(){
         return (
             this.state.loaded ?
-                <div className="card">
+                <div className={`card ${this.props.className}`}>
                         <div className="center">
                             <i className={"fas fa-" + this.props.config.icon}> </i>
                             <h3>{this.props.config.display_name}</h3>

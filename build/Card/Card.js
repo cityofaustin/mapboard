@@ -60,7 +60,7 @@ export default class Card extends React.Component {
     render() {
         return this.state.loaded ? React.createElement(
             'div',
-            { className: 'card' },
+            { className: `card ${this.props.className}` },
             React.createElement(
                 'div',
                 { className: 'center' },
