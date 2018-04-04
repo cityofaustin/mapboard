@@ -33,7 +33,10 @@ export default class Controller extends React.Component{
             loading: true,
             opts: this.props.config.headers.map(item => {
                 return item.opts ? {name: item.name, opts: item.opts} : null
-            })
+            }),
+            tvis : true,
+            mvis : true,
+            wvis: '',
         };
 
         if(this.props.config.url){
@@ -53,6 +56,9 @@ export default class Controller extends React.Component{
                             this
                         );
                     }
+                    if(this.props.config.uniqBy){
+                        data = _.uniqBy(data, this.props.config.uniqBy[0])
+                    }
 
                     this.setState({
                         data: data,
@@ -66,7 +72,6 @@ export default class Controller extends React.Component{
 
     /*Function passed to table to pull a new center and the marker information from the table*/
     getPosition = position => {
-        console.log(position);
         if(!this.props.config.fromGroup){
             let newPosition = [];
             if(this.props.config.latlong){
@@ -97,7 +102,7 @@ export default class Controller extends React.Component{
         tmpFilters[key] = data;
         data = filterData(this.state.originalData, tmpFilters, this.props.config.string_filter);
         if(this.props.config.uniqBy){
-            data = _.uniqBy(data, this.props.config.uniqBy)
+            data = _.uniqBy(data, this.props.config.uniqBy[0])
         }
         this.setState({
             loading: true
@@ -114,6 +119,50 @@ export default class Controller extends React.Component{
         })
     };
 
+    toggleHide = e => {
+        e.preventDefault();
+        switch (this.state.wvis){
+            case 't' :{
+                this.setState({tvis: false});
+                break;
+            }
+
+            case 'm' :{
+                this.setState({mvis: false});
+                break;
+            }
+
+            default :{
+                break;
+            }
+        }
+    };
+
+    handleRight = e => {
+        if(!this.state.tvis || !this.state.mvis){
+            e.preventDefault();
+            this.setState({tvis: true, mvis: true})
+        }
+    };
+
+    mouseLeave = () => {
+      this.setState({
+          wvis: ''
+      });
+    };
+
+    tableEnter = () => {
+        this.setState({
+            wvis: 't'
+        });
+    };
+
+    mapEnter = () => {
+        this.setState({
+            wvis: 'm'
+        });
+    };
+
 
     render(){
         return (
@@ -128,7 +177,7 @@ export default class Controller extends React.Component{
                     {this.props.config.charts && this.props.config.charts.map((chart, key) => {
                       switch(chart.type){
                         case 'doughnut' : {
-                          return <Doughnut key={key} title={chart.title} data={this.state.data} />
+                          return <Doughnut marker={chart.marker} total={chart.total} percent={chart.percent} key={key} title={chart.title} data={this.state.data}/>
                         }
                       }
                     })
@@ -143,9 +192,9 @@ export default class Controller extends React.Component{
                             }
                         })}
                   </div>
-                  <div className="controller-container">
-                    <Table className="flex-table" fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} data={this.state.data}  filter={this.state.filters} getPosition={this.getPosition} headers={this.props.config.headers}/>
-                    <Map className="flex-map" id={this.state.id ? this.state.id : -1} bounds={this.state.bounds} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} marker_type={this.props.config.marker_type} color={this.props.config.headers[this.props.config.color]} match={this.props.config.id_match} headers={this.props.config.headers} marker={this.props.config.fromGroup ? this.state.group: this.state.marker}  markers={this.props.config.fromGroup ? this.state.markers: this.state.data} center={this.state.position}/>
+                  <div onContextMenu={this.handleRight} className="controller-container">
+                    <div hidden={!this.state.tvis} onMouseEnter={this.tableEnter} onDoubleClick={this.toggleHide} className="flex-table"><Table onDoubleClick={this.hideElem} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} data={this.state.data}  filter={this.state.filters} getPosition={this.getPosition} headers={this.props.config.headers}/></div>
+                    <div hidden={!this.state.mvis} onMouseEnter={this.mapEnter} onDoubleClick={this.toggleHide} className="flex-map"><Map vis={this.state.tvis} id={this.state.id ? this.state.id : -1} bounds={this.state.bounds} fromGroup={this.props.config.fromGroup ? this.props.config.fromGroup : null} marker_type={this.props.config.marker_type} color={this.props.config.headers[this.props.config.color]} match={this.props.config.id_match} headers={this.props.config.headers} marker={this.props.config.fromGroup ? this.state.group: this.state.marker}  markers={this.props.config.fromGroup ? this.state.markers: this.state.data} center={this.state.position}/></div>
                   </div>
                 </div>
 

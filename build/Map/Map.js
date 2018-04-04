@@ -40,6 +40,12 @@ export default class Transport_Map extends React.Component {
         markers: nextProps.markers
       });
     }
+
+    if (nextProps.vis !== this.props.vis) {
+      this.setState({
+        vis: nextProps.vis
+      });
+    }
   }
 
   render() {
@@ -47,8 +53,18 @@ export default class Transport_Map extends React.Component {
       "div",
       { className: "flex-map", style: { textAlign: "center" } },
       React.createElement(
+        "style",
+        null,
+        `
+            #full {
+               width: 100vw !important
+            }
+            `
+      ),
+      React.createElement(
         Map,
         {
+          id: "full",
           bounds: this.props.bounds,
           animate: this.state.animate,
           center: this.props.center,

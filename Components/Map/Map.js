@@ -22,6 +22,7 @@ export default class Transport_Map extends React.Component {
       loading: true,
       latlng: this.props.center
     };
+
   }
 
   componentWillMount() {
@@ -40,11 +41,26 @@ export default class Transport_Map extends React.Component {
         markers: nextProps.markers
       });
     }
+
+    if(nextProps.vis !== this.props.vis){
+      this.setState({
+          vis: nextProps.vis
+      })
+    }
   }
 
-  render() {      return !this.state.loading ? (
-      <div className="flex-map" style={{ textAlign: "center" }}>
+  render() {  
+    return !this.state.loading ? (
+      <div className="flex-map" style={{ textAlign: "center"}}>
+        <style>
+            {`
+            #full {
+               width: 100vw !important
+            }
+            `}
+        </style>
         <Map
+            id="full"
           bounds={this.props.bounds}
           animate={this.state.animate}
           center={this.props.center}

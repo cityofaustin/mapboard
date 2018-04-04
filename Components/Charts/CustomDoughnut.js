@@ -56,9 +56,17 @@ export default class DonutWithText extends React.Component {
     super(props);
   }
   render() {
+    let total = 0;
+    let percent = 0;
+    this.props.data.forEach(i => {
+      total += Number(i[this.props.total]);
+      if(i[this.props.marker] === this.props.percent){
+        percent+= Number(i[this.props.total]);
+      }
+    });
     const data = {
       datasets: [{
-        data: [200, 50],
+        data: [percent, total-percent],
         backgroundColor: [
           '#217d1e',
           '#BFBFBF'
