@@ -1,6 +1,6 @@
 {
   "name": "mapboard-components",
-  "version": "0.7.2",
+  "version": "0.7.5",
   "private": false,
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",

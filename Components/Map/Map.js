@@ -60,7 +60,7 @@ export default class Transport_Map extends React.Component {
             `}
         </style>
         <Map
-            id="full"
+            id={this.props.vis ? '' : 'full' }
           bounds={this.props.bounds}
           animate={this.state.animate}
           center={this.props.center}
